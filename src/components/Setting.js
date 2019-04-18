@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
 
-import logo from '../icons/logo.png';
+import logo from '../icons/logo.svg';
 
 const SETTING_SCHEMA = Yup.object().shape({
   name: Yup.string().required('Name is required field.'),
