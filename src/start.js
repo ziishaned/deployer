@@ -8,7 +8,7 @@ let mainWindow;
 function createWindow() {
   const defaultWidth = 478;
   const defaultHeight = 712;
-  mainWindow = new BrowserWindow({ 
+  mainWindow = new BrowserWindow({
       width: defaultWidth,
       minWidth: defaultWidth,
       maxWidth: defaultWidth,
@@ -25,6 +25,8 @@ function createWindow() {
         slashes: true
       })
   );
+
+  mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null
