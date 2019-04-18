@@ -86,7 +86,6 @@ class Home extends Component {
                         href="#"
                         onClick={e => {
                           e.preventDefault();
-                          console.log('Open link inside browser!');
                           shell.openExternal(job.url);
                         }}
                         className="text-dark"
