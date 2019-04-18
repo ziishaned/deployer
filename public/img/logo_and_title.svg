@@ -12,7 +12,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.0 r9654"
-   width="1032.1804"
+   width="1159.1804"
    height="331.85538"
    xml:space="preserve"
    sodipodi:docname="logo+title.svg"><metadata
@@ -296,5 +296,5 @@
          id="tspan5677"
          x="231.70523"
          y="-71.714066"
-         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia">Jenkins</tspan></text>
+         style="font-size:144px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:100%;writing-mode:lr-tb;text-anchor:start;font-family:Georgia">Deployer</tspan></text>
 </g></svg>
