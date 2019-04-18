@@ -15,6 +15,7 @@ function createWindow() {
       height: defaultHeight,
       minHeight: defaultHeight,
       maxHeight: defaultHeight,
+      webPreferences: {webSecurity: false}
   });
 
   mainWindow.loadURL(

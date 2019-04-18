@@ -7,13 +7,18 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "bootstrap": "^4.3.1",
+    "electron-debug": "^2.2.0",
+    "formik": "^1.5.2",
+    "jenkins": "^0.25.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "yup": "^0.27.0"
   },
   "scripts": {
-    "start": "nf start -p 3000",
+    "start": "NODE_ENV=development nf start -p 3000",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -45,6 +50,7 @@
   "devDependencies": {
     "electron": "^4.1.4",
     "electron-builder": "^20.39.0",
+    "electron-devtools-installer": "^2.2.4",
     "foreman": "^3.0.1"
   }
 }
