@@ -18,3 +18,19 @@ export const getJobs = async () => {
 
   return jenkins.info();
 };
+
+export const getJobParameter = async (jobName) => {
+  const url = getJenkinsUrl();
+
+  const jenkins = Jenkins({
+    baseUrl: url,
+    promisify: true
+  });
+
+  const jobInfo = await jenkins.job.get(jobName);
+  const { parameterDefinitions: jobParametersList } = jobInfo.actions.find(
+    ({ _class }) => _class === 'hudson.model.ParametersDefinitionProperty'
+  );
+
+  return jobParametersList;
+};

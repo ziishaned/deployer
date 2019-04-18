@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import React, { Component } from 'react';
 
 import Header from './partials/Header';
+import {getJobParameter} from '../services/jenkins';
 
 export default class JobBuild extends Component {
   constructor(props) {
@@ -20,14 +21,8 @@ export default class JobBuild extends Component {
   async componentWillMount() {
     const { match } = this.props;
 
-    this.jenkins = Jenkins({
-      baseUrl: 'https://zeeshan.ahmad:119c0fd8f5dd0077c739f406524925c3aa@jenkins-live.tajawal.io:8443',
-      promisify: true
-    });
-    const jobInfo = await this.jenkins.job.get(match.params.name);
-    const { parameterDefinitions: jobParametersList } = jobInfo.actions.find(
-      ({ _class }) => _class === 'hudson.model.ParametersDefinitionProperty'
-    );
+    const jobName = match.params.name;
+    const jobParametersList = await getJobParameter(jobName);
 
     this.setState({
       jobParametersList,
