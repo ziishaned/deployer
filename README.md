@@ -1,5 +1,5 @@
 <div align="center">
-	<img height="148" src="https://cdn.rawgit.com/ziishaned/deployer/master/public/img/logo_and_title.svg" alt="Deployer" />
+	<img height="148" src="https://rawcdn.githack.com/ziishaned/deployer/16a2b7020ffa1651d9059a55d49f0c85eec0e1e4/public/img/logo_and_title.svg" alt="Deployer" />
   <h2 align="center">Deployer</h2>
   <p align="center">Cross-platform application to deploy your applications through Jenkins.</p>
   <div align="center">
