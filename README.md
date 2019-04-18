@@ -4,7 +4,7 @@
 </h1>
 <p align="center">Cross-platform application to deploy your applications through Jenkins.</p>
 
-<img src="https://i.imgur.com/qC53Wdk.png" alt="demo"/>
+<img src="https://i.imgur.com/qIJCC2E.png" alt="demo"/>
 
 ## Contributions
 
