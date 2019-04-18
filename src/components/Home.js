@@ -1,4 +1,3 @@
-// import { shell } from 'electron';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
@@ -37,6 +36,7 @@ class Home extends Component {
   };
 
   render() {
+    const { shell } = window.electron;
     const { filteredJobs, loadingJobs } = this.state;
 
     return (
@@ -87,7 +87,7 @@ class Home extends Component {
                         onClick={e => {
                           e.preventDefault();
                           console.log('Open link inside browser!');
-                          // shell.openExternal(job.url);
+                          shell.openExternal(job.url);
                         }}
                         className="text-dark"
                         title="Open link in browser."
