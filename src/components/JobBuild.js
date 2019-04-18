@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 import Header from './partials/Header';
 import {getJobParameter} from '../services/jenkins';
@@ -8,30 +8,30 @@ export default class JobBuild extends Component {
   constructor(props) {
     super(props);
 
-    const { match } = props;
+    const {match} = props;
     this.state = {
       redirectToHome: false,
       jobParametersList: {},
       loadingJobParameter: true,
-      jobName: match.params.name
+      jobName: match.params.name,
     };
   }
 
   async componentWillMount() {
-    const { match } = this.props;
+    const {match} = this.props;
 
     const jobName = match.params.name;
     const jobParametersList = await getJobParameter(jobName);
 
     this.setState({
       jobParametersList,
-      loadingJobParameter: false
+      loadingJobParameter: false,
     });
   }
 
-  handleSubmit = async e => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    const { elements: parameters } = document.getElementById('build-form');
+    const {elements: parameters} = document.getElementById('build-form');
 
     const formData = {};
     for (let i = 0; i < parameters.length - 1; i += 1) {
@@ -41,21 +41,16 @@ export default class JobBuild extends Component {
 
     await this.jenkins.job.build({
       name: 'dev-api-config-web',
-      parameters: formData
+      parameters: formData,
     });
 
     this.setState({
-      redirectToHome: true
+      redirectToHome: true,
     });
   };
 
   render() {
-    const {
-      jobParametersList,
-      jobName,
-      loadingJobParameter,
-      redirectToHome
-    } = this.state;
+    const {jobParametersList, jobName, loadingJobParameter, redirectToHome} = this.state;
     if (redirectToHome) {
       return <Redirect to="/" />;
     }
@@ -70,9 +65,7 @@ export default class JobBuild extends Component {
             </div>
             <div>{jobName}</div>
           </h6>
-          {loadingJobParameter && (
-            <p className="text-center py-5">Loading...</p>
-          )}
+          {loadingJobParameter && <p className="text-center py-5">Loading...</p>}
           {!loadingJobParameter && (
             <div className="card shadow-sm mb-4">
               <div className="card-header bg-white font-weight-bold">Parameter</div>
@@ -86,11 +79,7 @@ export default class JobBuild extends Component {
                         name={parameter.name}
                         id={parameter.name}
                         className="form-control"
-                        defaultValue={
-                          parameter.defaultParameterValue
-                            ? parameter.defaultParameterValue.value
-                            : ''
-                        }
+                        defaultValue={parameter.defaultParameterValue ? parameter.defaultParameterValue.value : ''}
                       />
                     </div>
                   ))}

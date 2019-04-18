@@ -14,6 +14,7 @@
     "formik": "^1.5.2",
     "jenkins": "^0.25.0",
     "node-sass": "^4.11.0",
+    "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
@@ -30,7 +31,8 @@
     "react-start": "BROWSER=none react-scripts start",
     "pack": "build --dir",
     "dist": "npm run build && build",
-    "postinstall": "install-app-deps"
+    "postinstall": "install-app-deps",
+    "prettier": "prettier --write src/**/*.js"
   },
   "build": {
     "appId": "com.electron.deployer",

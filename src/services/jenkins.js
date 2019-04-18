@@ -13,7 +13,7 @@ export const getJobs = async () => {
 
   const jenkins = Jenkins({
     baseUrl: url,
-    promisify: true
+    promisify: true,
   });
 
   return jenkins.info();
@@ -24,12 +24,12 @@ export const getJobParameter = async (jobName) => {
 
   const jenkins = Jenkins({
     baseUrl: url,
-    promisify: true
+    promisify: true,
   });
 
   const jobInfo = await jenkins.job.get(jobName);
-  const { parameterDefinitions: jobParametersList } = jobInfo.actions.find(
-    ({ _class }) => _class === 'hudson.model.ParametersDefinitionProperty'
+  const {parameterDefinitions: jobParametersList} = jobInfo.actions.find(
+    ({_class}) => _class === 'hudson.model.ParametersDefinitionProperty'
   );
 
   return jobParametersList;

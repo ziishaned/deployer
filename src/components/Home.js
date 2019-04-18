@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
 
 import Header from './partials/Header';
 import {getJobs} from '../services/jenkins';
@@ -10,34 +10,31 @@ class Home extends Component {
     this.state = {
       jobs: [],
       filteredJobs: [],
-      loadingJobs: true
+      loadingJobs: true,
     };
   }
 
   async componentWillMount() {
-    const { jobs } = await getJobs();
+    const {jobs} = await getJobs();
 
     this.setState({
       jobs,
       filteredJobs: jobs,
-      loadingJobs: false
+      loadingJobs: false,
     });
   }
 
-  filterJobs = e => {
-    let { jobs: updatedList } = this.state;
-    updatedList = updatedList.filter(
-      ({ name }) =>
-        name.toLowerCase().search(e.target.value.toLowerCase()) !== -1
-    );
+  filterJobs = (e) => {
+    let {jobs: updatedList} = this.state;
+    updatedList = updatedList.filter(({name}) => name.toLowerCase().search(e.target.value.toLowerCase()) !== -1);
     this.setState({
-      filteredJobs: updatedList
+      filteredJobs: updatedList,
     });
   };
 
   render() {
-    const { shell } = window.electron;
-    const { filteredJobs, loadingJobs } = this.state;
+    const {shell} = window.electron;
+    const {filteredJobs, loadingJobs} = this.state;
 
     return (
       <div>
@@ -49,21 +46,16 @@ class Home extends Component {
               type="text"
               className="form-control py-4"
               placeholder="Search jobs..."
-              style={{ paddingLeft: 38 }}
+              style={{paddingLeft: 38}}
               onChange={this.filterJobs}
             />
           </div>
           {loadingJobs && <p className="text-center py-5">Loading...</p>}
-          {!loadingJobs && !filteredJobs.length && (
-            <p className="text-center py-5">Nothing found!</p>
-          )}
+          {!loadingJobs && !filteredJobs.length && <p className="text-center py-5">Nothing found!</p>}
           {!loadingJobs && (
             <ul className="list-unstyled mb-4">
               {filteredJobs.map((job, index) => (
-                <li
-                  className="border rounded px-3 py-3 mt-3 shadow-sm bg-white"
-                  key={index.toString()}
-                >
+                <li className="border rounded px-3 py-3 mt-3 shadow-sm bg-white" key={index.toString()}>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex align-items-center">
                       {job.color === 'blue' ? (
@@ -72,23 +64,20 @@ class Home extends Component {
                         <i className="fa fa-times-circle fa-fw mr-2 text-danger" />
                       )}
                       <div
-                        onClick={e => {
+                        onClick={(e) => {
                           e.preventDefault();
                           shell.openExternal(job.url);
                         }}
                         className="btn btn-link text-dark p-0"
                         title="Open link in browser."
-                        style={{ cursor: 'pointer' }}
+                        style={{cursor: 'pointer'}}
                       >
                         {job.name}
                       </div>
                     </div>
                     <ul className="list-inline mb-0">
                       <li className="list-inline-item">
-                        <Link
-                          to={`/job/${job.name}/build`}
-                          className="btn btn-dark btn-sm shadow-sm"
-                        >
+                        <Link to={`/job/${job.name}/build`} className="btn btn-dark btn-sm shadow-sm">
                           <i className="fa fa-wrench fa-fw" /> Build
                         </Link>
                       </li>
