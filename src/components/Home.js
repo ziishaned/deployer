@@ -82,17 +82,17 @@ class Home extends Component {
                       ) : (
                         <i className="fa fa-times-circle fa-fw mr-2 text-danger" />
                       )}
-                      <a
-                        href="#"
+                      <div
                         onClick={e => {
                           e.preventDefault();
                           shell.openExternal(job.url);
                         }}
-                        className="text-dark"
+                        className="btn btn-link text-dark p-0"
                         title="Open link in browser."
+                        style={{ cursor: 'pointer' }}
                       >
                         {job.name}
-                      </a>
+                      </div>
                     </div>
                     <ul className="list-inline mb-0">
                       <li className="list-inline-item">

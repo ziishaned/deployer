@@ -1,4 +1,3 @@
-import Jenkins from 'jenkins';
 import { Redirect } from 'react-router';
 import React, { Component } from 'react';
 
