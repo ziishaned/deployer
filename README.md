@@ -1,6 +1,7 @@
 <div align="center">
-	<img height="148" src="https://raw.githack.com/ziishaned/deployer/master/public/img/logo_and_title.svg" alt="Deployer" />
-  <h2 align="center">Deployer</h2>
+	<h2>
+	  <img height="148" src="https://raw.githack.com/ziishaned/deployer/master/public/img/logo_and_title.svg" alt="Deployer" />
+	</h2>
   <p align="center">Cross-platform application to deploy your applications through Jenkins.</p>
   <div align="center">
       <a href="https://github.com/ziishaned/deployer/blob/master/license">
