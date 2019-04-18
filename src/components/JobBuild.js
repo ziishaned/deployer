@@ -75,7 +75,7 @@ export default class JobBuild extends Component {
           )}
           {!loadingJobParameter && (
             <div className="card shadow-sm mb-4">
-              <div className="card-header bg-white">Parameter</div>
+              <div className="card-header bg-white font-weight-bold">Parameter</div>
               <div className="card-body">
                 <form onSubmit={this.handleSubmit} id="build-form">
                   {jobParametersList.map((parameter, index) => (
@@ -94,8 +94,8 @@ export default class JobBuild extends Component {
                       />
                     </div>
                   ))}
-                  <div className="text-center">
-                    <button type="submit" className="btn btn-dark shadow-sm">
+                  <div className="mt-4">
+                    <button type="submit" className="btn btn-dark shadow-sm btn-block">
                       Build
                     </button>
                   </div>
