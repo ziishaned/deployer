@@ -1,6 +1,7 @@
 {
   "name": "deployer",
-  "version": "0.1.0",
+  "description": "Cross-platform application to deploy your applications through Jenkins.",
+  "version": "0.0.1",
   "private": true,
   "homepage": "./",
   "main": "src/start.js",
@@ -32,7 +33,7 @@
     "postinstall": "install-app-deps"
   },
   "build": {
-    "appId": "com.electron.electron-with-create-react-app",
+    "appId": "com.electron.deployer",
     "win": {
       "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
     },
