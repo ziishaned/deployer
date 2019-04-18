@@ -1,10 +1,22 @@
 {
   "name": "deployer",
-  "description": "Cross-platform application to deploy your applications through Jenkins.",
+  "description": "Deployer – Cross-platform application to deploy your applications through Jenkins.",
+  "productName": "Deployer",
+  "author": "Zeeshan Ahmad <ziishaned@gmail.com>",
   "version": "0.0.1",
   "private": true,
   "homepage": "./",
-  "main": "src/start.js",
+  "main": "public/electron.js",
+  "license": "MIT",
+  "scripts": {
+    "_react": "cross-env BROWSER=none react-scripts start",
+    "_electron": "nodemon --exec \"cross-env APP_URL=http://localhost:3000 electron .\" --ext js --watch public/",
+    "_build": "react-scripts build",
+    "start": "concurrently \"yarn _react\" \"wait-on http://localhost:3000 && yarn _electron\" ",
+    "build": "yarn _build && build --mac --win --linux --x64 --ia32 -p always",
+    "icons": "electron-icon-maker -i public/img/logo.png -o public",
+    "prettier": "prettier --write src/**/*.js"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "bootstrap": "^4.3.1",
@@ -13,7 +25,6 @@
     "electron-updater": "^4.0.6",
     "formik": "^1.5.2",
     "jenkins": "^0.25.0",
-    "node-sass": "^4.11.0",
     "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -21,27 +32,16 @@
     "react-scripts": "2.1.8",
     "yup": "^0.27.0"
   },
-  "scripts": {
-    "start": "NODE_ENV=development nf start -p 3000",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "electron": "electron .",
-    "electron-start": "node src/start-react",
-    "react-start": "BROWSER=none react-scripts start",
-    "pack": "build --dir",
-    "dist": "npm run build && build",
-    "postinstall": "install-app-deps",
-    "prettier": "prettier --write src/**/*.js"
-  },
-  "build": {
-    "appId": "com.electron.deployer",
-    "win": {
-      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
-    },
-    "directories": {
-      "buildResources": "public"
-    }
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "electron": "^4.1.4",
+    "electron-builder": "^20.39.0",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-icon-maker": "^0.0.4",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.11",
+    "wait-on": "^3.2.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,10 +52,54 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "electron": "^4.1.4",
-    "electron-builder": "^20.39.0",
-    "electron-devtools-installer": "^2.2.4",
-    "foreman": "^3.0.1"
+  "build": {
+    "extends": null,
+    "appId": "info.kamranahmed.pennywise",
+    "asar": true,
+    "copyright": "Copyright © 2018 Kamran Ahmed",
+    "files": [
+      "public/**/*",
+      "build/**/*",
+      "!public/pennywise.png",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.navigation",
+      "icon": "public/img/icon.icns"
+    },
+    "linux": {
+      "category": "Network",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        },
+        {
+          "target": "AppImage",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "public/img/icon.ico"
+    },
+    "fileAssociations": [
+      {
+        "name": "Document",
+        "description": "Deployer",
+        "role": "Viewer",
+        "ext": "html"
+      }
+    ]
   }
 }
