@@ -1,5 +1,5 @@
 {
-  "name": "jenkins-electron",
+  "name": "deployer",
   "version": "0.1.0",
   "private": true,
   "homepage": "./",

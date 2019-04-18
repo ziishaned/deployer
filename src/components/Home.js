@@ -43,23 +43,12 @@ class Home extends Component {
       <div>
         <Header />
         <div className="container">
-          <div className="d-flex justify-content-between align-items-center py-4">
-            <h6 className="text-uppercase mb-0 font-weight-bold d-flex align-items-center">
-              <div className="mr-2">
-                <i className="fa fa-folder fa-fw" />
-              </div>
-              <div>JOBS</div>
-            </h6>
-            {/* <div className="small"> */}
-            {/*  <i className="fa fa-sort-amount-down fa-fw"/> Sort */}
-            {/* </div> */}
-          </div>
-          <div className="d-flex align-items-center small">
+          <div className="d-flex align-items-center small mt-3">
             <i className="fa fa-search fa-fw text-muted position-absolute pl-3" />
             <input
               type="text"
               className="form-control py-4"
-              placeholder="Search..."
+              placeholder="Search jobs..."
               style={{ paddingLeft: 38 }}
               onChange={this.filterJobs}
             />
