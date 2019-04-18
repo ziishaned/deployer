@@ -1,51 +1,60 @@
 import * as Yup from 'yup';
-import { Redirect } from 'react-router';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-import logo from '../logo.png';
+import logo from '../logo.svg';
 
-const AddAccountSchema = Yup.object().shape({
+const SETTING_SCHEMA = Yup.object().shape({
   name: Yup.string().required('Name is required field.'),
   url: Yup.string().required('URL is required field.'),
   username: Yup.string().required('Username is required field.'),
   key: Yup.string().required('API token is required field.')
 });
 
-export default class AddAccount extends Component {
+export default class Setting extends Component {
   state = {
+    setting: { name: '', url: '', username: '', key: '' },
     toDashboard: false
   };
 
+  componentWillMount() {
+    const setting = JSON.parse(localStorage.getItem('setting'));
+
+    this.setState({
+      setting,
+    });
+  }
+
   handleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false);
-    localStorage.setItem('account', JSON.stringify(values));
+    localStorage.setItem('setting', JSON.stringify(values));
     this.setState({
       toDashboard: true
     });
   };
 
   render() {
-    const { toDashboard } = this.state;
+    const { toDashboard, setting } = this.state;
     if (toDashboard) {
       return <Redirect to="/" />;
     }
 
     return (
       <div className="container mb-5">
-        <div className="card shadow-sm" style={{ marginTop: '2.1rem' }}>
+        <div className="card shadow-sm" style={{ marginTop: '3.6rem' }}>
           <div className="card-body">
             <div className="text-center mb-3">
-              <img src={logo} alt="" width="98" />
+              <img src={logo} alt="Deployer" width="98" />
             </div>
             <Formik
-              initialValues={{ name: '', url: '', username: '', key: '' }}
-              validationSchema={AddAccountSchema}
+              initialValues={setting}
+              validationSchema={SETTING_SCHEMA}
               onSubmit={this.handleSubmit}
               render={({ errors, touched, isSubmitting }) => (
                 <Form>
                   <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name"><i className="fa fa-lock fa-fw"/> Name</label>
                     <Field
                       type="text"
                       className={`form-control ${
@@ -61,7 +70,7 @@ export default class AddAccount extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="url">URL</label>
+                    <label htmlFor="url"><i className="fa fa-link fa-fw"/> URL</label>
                     <Field
                       type="text"
                       className={`form-control ${
@@ -77,7 +86,7 @@ export default class AddAccount extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username"><i className="fa fa-user fa-fw"/> Username</label>
                     <Field
                       type="text"
                       className={`form-control ${
@@ -93,7 +102,7 @@ export default class AddAccount extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="key">API token</label>
+                    <label htmlFor="key"><i className="fa fa-key fa-fw"/> API token</label>
                     <Field
                       type="text"
                       className={`form-control ${
@@ -107,18 +116,14 @@ export default class AddAccount extends Component {
                       component="div"
                       className="invalid-feedback"
                     />
-                    <p className="form-text text-muted mt-2">
-                      Not sure how to get the API token?{' '}
-                      <a href="/">See tutorial</a>
-                    </p>
                   </div>
-                  <div className="text-center mb-2">
+                  <div className="text-center mb-2 mt-4">
                     <button
                       type="submit"
-                      className="btn btn-success shadow-sm mt-2"
+                      className="btn btn-dark shadow-sm btn-block"
                       disabled={isSubmitting}
                     >
-                      Add account
+                      Update
                     </button>
                   </div>
                 </Form>

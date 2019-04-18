@@ -1,11 +1,11 @@
 import Jenkins from 'jenkins';
 
 const getJenkinsUrl = () => {
-  const account = JSON.parse(localStorage.getItem('account'));
+  const setting = JSON.parse(localStorage.getItem('setting'));
 
-  const url = account.url.replace(/https?:\/\//, '');
+  const url = setting.url.replace(/https?:\/\//, '');
 
-  return `https://${account.username}:${account.key}@${url}`;
+  return `https://${setting.username}:${setting.key}@${url}`;
 };
 
 export const getJobs = async () => {

@@ -1,5 +1,5 @@
-import { Redirect } from 'react-router';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Header from './partials/Header';
 import {getJobParameter} from '../services/jenkins';

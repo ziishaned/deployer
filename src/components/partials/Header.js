@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class Header extends Component {
   render() {
-    const { name: accountName } = JSON.parse(localStorage.getItem('account'));
+    const { name: accountName } = JSON.parse(localStorage.getItem('setting'));
 
     return (
       <div>
@@ -13,8 +13,8 @@ class Header extends Component {
               <Link to="/" className="font-weight-bold text-dark">
                 { accountName }
               </Link>
-              <Link to="/add-account" className="text-dark small">
-                <i className="fa fa-lock fa-fw" /> Account
+              <Link to="/setting" className="text-dark small">
+                <i className="fa fa-cog fa-fw" /> Setting
               </Link>
             </div>
           </div>

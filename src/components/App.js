@@ -1,19 +1,32 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  BrowserRouter as Router
+} from "react-router-dom";
 
 import Home from './Home';
 import JobBuild from './JobBuild';
-import AddAccount from './AddAccount';
+import Setting from './Setting';
 import PageNotFound from './PageNotFound';
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    localStorage.getItem('setting')
+      ? <Component {...props} />
+      : <Redirect to={{ pathname: '/setting' }} />
+  )} />
+);
 
 class App extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/add-account" component={AddAccount} />
-          <Route path="/job/:name/build" component={JobBuild} />
+          <PrivateRoute path="/" exact component={Home} />
+          <Route path="/setting" component={Setting} />
+          <PrivateRoute path="/job/:name/build" component={JobBuild} />
           <Route component={PageNotFound} />
         </Switch>
       </Router>
