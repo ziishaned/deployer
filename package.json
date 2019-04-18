@@ -5,6 +5,7 @@
   "homepage": "./",
   "main": "src/start.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
     "bootstrap": "^4.3.1",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
