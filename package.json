@@ -14,7 +14,7 @@
     "_build": "react-scripts build",
     "start": "concurrently \"yarn _react\" \"wait-on http://localhost:3000 && yarn _electron\" ",
     "build": "yarn _build && build --mac --win --linux --x64 --ia32 -p always",
-    "icons": "electron-icon-maker -i public/img/logo.png -o public",
+    "icons": "electron-icon-maker -i public/img/deployer.png -o public",
     "prettier": "prettier --write src/**/*.js"
   },
   "dependencies": {
@@ -35,8 +35,8 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
-    "electron": "^4.1.4",
-    "electron-builder": "^20.39.0",
+    "electron": "^3.0.6",
+    "electron-builder": "^20.28.4",
     "electron-devtools-installer": "^2.2.4",
     "electron-icon-maker": "^0.0.4",
     "node-sass": "^4.11.0",
@@ -54,13 +54,13 @@
   ],
   "build": {
     "extends": null,
-    "appId": "info.kamranahmed.pennywise",
+    "appId": "info.zeeshanahmad.deployer",
     "asar": true,
-    "copyright": "Copyright © 2018 Kamran Ahmed",
+    "copyright": "Copyright © 2019 Zeeshan Ahmad",
     "files": [
       "public/**/*",
       "build/**/*",
-      "!public/pennywise.png",
+      "!public/img/deployer.png",
       "package.json"
     ],
     "mac": {

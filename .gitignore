@@ -51,6 +51,7 @@ fabric.properties
 /build
 
 # misc
+dist
 .DS_Store
 .env.local
 .env.development.local
