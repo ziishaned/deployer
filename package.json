@@ -15,7 +15,8 @@
     "start": "concurrently \"yarn _react\" \"wait-on http://localhost:3000 && yarn _electron\" ",
     "build": "yarn _build && build --mac --win --linux --x64 --ia32 -p always",
     "icons": "electron-icon-maker -i public/img/deployer.png -o public",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write src/**/*.js",
+    "test": "mocha"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
@@ -33,14 +34,27 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@types/bootstrap": "^4.3.0",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/jenkins": "^0.23.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node-sass": "^4.11.0",
+    "@types/prettier": "^1.16.2",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.2",
+    "@types/wait-on": "^3.2.0",
+    "@types/yup": "^0.26.12",
     "concurrently": "^4.1.0",
     "cross-env": "^5.2.0",
     "electron": "^3.0.6",
     "electron-builder": "^20.28.4",
     "electron-devtools-installer": "^2.2.4",
     "electron-icon-maker": "^0.0.4",
+    "mocha": "^6.1.4",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.11",
+    "spectron": "^5.0.0",
     "wait-on": "^3.2.0"
   },
   "eslintConfig": {
